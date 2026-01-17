@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Biodata Maker</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Input Section -->
+        <div class="input-section no-print">
+            <h1>Create Your Biodata</h1>
+            <p>Fill in the details below to generate your biodata.</p>
+
+            <form id="biodataForm">
+                <div class="form-group full-width">
+                    <label for="photoUpload">Upload Photo 1</label>
+                    <input type="file" id="photoUpload" accept="image/*">
+                </div>
+                <div class="form-group full-width">
+                    <label for="photoUpload2">Upload Photo 2</label>
+                    <input type="file" id="photoUpload2" accept="image/*">
+                </div>
+
+                <h3>Personal Details</h3>
+                <div class="form-grid" id="personal-inputs">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" placeholder="e.g. Kushagra Rohatgi" value="Kushagra Rohatgi">
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select name="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" name="dob" value="1996-03-23">
+                    </div>
+                    <div class="form-group">
+                        <label>Time of Birth</label>
+                        <input type="text" name="tob" placeholder="e.g. 4:45 AM" value="4:45 AM">
+                    </div>
+                    <div class="form-group">
+                        <label>Place of Birth</label>
+                        <input type="text" name="pob" placeholder="e.g. Agra, Uttar Pradesh"
+                            value="Agra, Uttar Pradesh">
+                    </div>
+                    <div class="form-group">
+                        <label>Rashi</label>
+                        <input type="text" name="rashi" value="Mesh (Aries)">
+                    </div>
+                    <div class="form-group">
+                        <label>Height</label>
+                        <input type="text" name="height" value="5 feet 5 inches">
+                    </div>
+                    <div class="form-group">
+                        <label>Complexion</label>
+                        <input type="text" name="complexion" value="Brown">
+                    </div>
+                    <div class="form-group">
+                        <label>Marital Status</label>
+                        <input type="text" name="marital_status" value="Single">
+                    </div>
+                    <div class="form-group">
+                        <label>Religion</label>
+                        <input type="text" name="religion" value="Hindu">
+                    </div>
+                    <div class="form-group">
+                        <label>Mother Tongue</label>
+                        <input type="text" name="language" value="Hindi, English">
+                    </div>
+                    <div class="form-group">
+                        <label>Education</label>
+                        <input type="text" name="education" value="Master in Computer Application">
+                    </div>
+                    <div class="form-group">
+                        <label>College</label>
+                        <input type="text" name="college" value="Galgotias University">
+                    </div>
+                    <div class="form-group">
+                        <label>Occupation</label>
+                        <input type="text" name="occupation" value="Senior Backend Developer">
+                    </div>
+                    <div class="form-group">
+                        <label>Income</label>
+                        <input type="text" name="income" value="12 - 15 LPA">
+                    </div>
+                </div>
+                <button type="button" class="add-field-btn" data-section="personal">+ Add Personal Field</button>
+
+                <h3>Family Details</h3>
+                <div class="form-grid" id="family-inputs">
+                    <div class="form-group">
+                        <label>Father's Name</label>
+                        <input type="text" name="father_name" value="Sudhir Rohatgi">
+                    </div>
+                    <div class="form-group">
+                        <label>Father's Occupation</label>
+                        <input type="text" name="father_occ" value="Computer Supervisor(GST Department)">
+                    </div>
+                    <div class="form-group">
+                        <label>Mother's Name</label>
+                        <input type="text" name="mother_name" value="Kumud Rohatgi(MA English)">
+                    </div>
+                    <div class="form-group">
+                        <label>Mother's Occupation</label>
+                        <input type="text" name="mother_occ" value="Homemaker">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Grandparents</label>
+                        <textarea name="grandparents"
+                            rows="2">Late B.P Rohatgi(sales tax officer), Nirmal Rohatgi(Gwalior)</textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Siblings</label>
+                        <textarea name="siblings" rows="2">Elder Sister: Megha Rohatgi (Senior Data Analyst)</textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Family Values</label>
+                        <textarea name="family_values" rows="2">Hindu, Brahmin, Nuclear Family, Middle Class</textarea>
+                    </div>
+                </div>
+                <button type="button" class="add-field-btn" data-section="family">+ Add Family Field</button>
+
+                <h3>Contact Details</h3>
+                <div class="form-grid" id="contact-inputs">
+                    <div class="form-group">
+                        <label>Father's Contact No.</label>
+                        <input type="text" name="Father's Contact No." value="9412456190">
+                    </div>
+                    <div class="form-group">
+                        <label>Mother's Contact No.</label>
+                        <input type="text" name="Mother's Contact No." value="8923039025">
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Address</label>
+                        <textarea name="address" rows="3">C-46, Pratap Nagar Jaipur House, Agra</textarea>
+                    </div>
+                </div>
+                <button type="button" class="add-field-btn" data-section="contact">+ Add Contact Field</button>
+
+                <div class="actions">
+                    <button type="button" id="saveBtn" class="secondary-btn">Save Data (JSON)</button>
+                    <button type="button" id="wordBtn" class="secondary-btn" style="background-color: #2b579a;">Save as
+                        Word</button>
+                    <button type="button" id="loadBtn" class="secondary-btn">Load Data (JSON)</button>
+                    <input type="file" id="jsonInput" accept=".json" style="display: none;">
+                    <button type="button" id="printBtn">Save as PDF / Print</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <div id="biodataPreview" class="biodata-paper">
+                <!-- Decorative Borders (Corner Images) -->
+                <div class="corner top-left"></div>
+                <div class="corner top-right"></div>
+                <div class="corner bottom-left"></div>
+                <div class="corner bottom-right"></div>
+                <!-- Side Vines -->
+                <div class="side-decoration left"></div>
+                <div class="side-decoration right"></div>
+
+                <!-- Header -->
+                <div class="biodata-header">
+                    <img class="ganesh-icon" src="ganesh.png" alt="Om Ganeshay Namah"
+                        style="height: 80px; opacity: 1; margin-bottom: 10px;">
+                    <h1 id="displayTitle">Biodata</h1>
+                </div>
+
+                <!-- Content Grid -->
+                <div class="content-wrapper">
+                    <!-- Section: Personal Details -->
+                    <div class="section-block">
+                        <h2 class="section-title">Personal Details</h2>
+                        <div class="details-with-photo">
+                            <div class="details-list" id="personal-preview">
+                                <div class="row"><span class="label">Name</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="name"></span></div>
+                                <div class="row"><span class="label">Gender</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="gender"></span></div>
+                                <div class="row"><span class="label">Date of Birth</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="dob"></span>
+                                </div>
+                                <div class="row"><span class="label">Place of Birth</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="pob"></span>
+                                </div>
+                                <div class="row"><span class="label">Time of Birth</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="tob"></span>
+                                </div>
+                                <div class="row"><span class="label">Rashi</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="rashi"></span></div>
+                                <div class="row"><span class="label">Height</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="height"></span></div>
+                                <div class="row"><span class="label">Complexion</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="complexion"></span></div>
+                                <div class="row"><span class="label">Marital Status</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="marital_status"></span>
+                                </div>
+                                <div class="row"><span class="label">Religion</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="religion"></span></div>
+                                <div class="row"><span class="label">Mother Tongue</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="language"></span>
+                                </div>
+                                <div class="row"><span class="label">Education</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="education"></span></div>
+                                <div class="row"><span class="label">College</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="college"></span></div>
+                                <div class="row"><span class="label">Occupation</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="occupation"></span></div>
+                                <div class="row"><span class="label">Income</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="income"></span></div>
+                            </div>
+                            <!-- Photo 1 -->
+                            <div class="photo-area">
+                                <img id="displayPhoto" src="https://via.placeholder.com/150" alt="Profile Photo 1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Family Details -->
+                    <div class="section-block">
+                        <h2 class="section-title">Family Details</h2>
+                        <div class="details-with-photo">
+                            <div class="details-list" id="family-preview">
+                                <div class="row"><span class="label">Father's Name</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="father_name"></span>
+                                </div>
+                                <div class="row"><span class="label">Father's Occ.</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="father_occ"></span>
+                                </div>
+                                <div class="row"><span class="label">Mother's Name</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="mother_name"></span>
+                                </div>
+                                <div class="row"><span class="label">Mother's Occ.</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="mother_occ"></span>
+                                </div>
+                                <div class="row"><span class="label">Grandparents</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="grandparents"></span>
+                                </div>
+                                <div class="row"><span class="label">Siblings</span> <span class="sep">:</span> <span
+                                        class="value" data-bind="siblings"></span></div>
+                                <div class="row"><span class="label">Family Values</span> <span class="sep">:</span>
+                                    <span class="value" data-bind="family_values"></span>
+                                </div>
+                            </div>
+                            <!-- Photo 2 -->
+                            <div class="photo-area">
+                                <img id="displayPhoto2" src="https://via.placeholder.com/150" alt="Profile Photo 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section: Contact Details -->
+                    <div class="section-block">
+                        <h2 class="section-title">Contact Details</h2>
+                        <div class="details-list" id="contact-preview">
+                            <div class="row"><span class="label">Father's Contact No.</span> <span class="sep">:</span>
+                                <span class="value" data-bind="Father's Contact No."></span>
+                            </div>
+                            <div class="row"><span class="label">Mother's Contact No.</span> <span class="sep">:</span>
+                                <span class="value" data-bind="Mother's Contact No."></span>
+                            </div>
+                            <div class="row"><span class="label">Address</span> <span class="sep">:</span> <span
+                                    class="value" data-bind="address"></span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Border -->
+                <div class="bottom-decoration"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js?v=2"></script>
+</body>
+
+</html>

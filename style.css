@@ -1,0 +1,479 @@
+/* Core Variables */
+:root {
+    --gold: #d4af37;
+    --gold-light: #f3e5ab;
+    --text-dark: #2c2c2c;
+    --bg-light: #f9f9f9;
+    --paper-bg: #ffffff;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.app-container {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+}
+
+/* --- Input Section Styling --- */
+.input-section {
+    flex: 1;
+    min-width: 350px;
+    padding: 40px;
+    background: white;
+    overflow-y: auto;
+    border-right: 1px solid #ddd;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.input-section h1 {
+    font-family: var(--font-heading);
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.input-section h3 {
+    margin-top: 30px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 5px;
+    font-family: var(--font-heading);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 0.9em;
+    color: #555;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-body);
+    transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--gold);
+    outline: none;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* For positioning controls */
+}
+
+.form-group:hover .field-controls {
+    opacity: 1;
+}
+
+.field-controls {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+    background: white;
+    padding-left: 5px;
+}
+
+.control-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #999;
+    padding: 0 3px;
+    margin-left: 2px;
+}
+
+.control-btn:hover {
+    color: var(--gold);
+}
+
+.control-btn.delete-btn:hover {
+    color: #dc3545;
+}
+
+.control-btn.move-btn {
+    font-size: 0.9rem;
+    position: relative;
+    top: -1px;
+}
+
+.control-btn.move-btn:hover {
+    color: #007bff;
+}
+
+.actions {
+    margin-top: 30px;
+    text-align: right;
+}
+
+button#printBtn {
+    background-color: var(--gold);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(212, 175, 55, 0.3);
+    transition: transform 0.1s;
+}
+
+.add-field-btn {
+    background: transparent;
+    border: 1px dashed #aaa;
+    color: #555;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    transition: all 0.2s;
+}
+
+.add-field-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: #fffcf0;
+}
+
+button.secondary-btn {
+    background-color: #6c757d;
+    box-shadow: 0 4px 6px rgba(108, 117, 125, 0.3);
+    margin-right: 10px;
+}
+
+button.secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+button#printBtn:hover {
+    transform: translateY(-2px);
+    background-color: #c5a028;
+}
+
+/* --- Preview Section Styling --- */
+.preview-section {
+    flex: 1.5;
+    background-color: #555;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    overflow-y: auto;
+    align-items: flex-start;
+}
+
+.biodata-paper {
+    width: 210mm;
+    /* A4 width */
+    min-height: 297mm;
+    /* A4 height */
+    background-color: var(--paper-bg);
+    padding: 30px 40px;
+    /* Reduced padding */
+    /* Internal Margin increased to avoid overlap */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #e0e0e0;
+}
+
+/* Border Design - Ornate Gold Frame */
+.biodata-paper:before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 2px solid var(--gold);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.biodata-paper:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid var(--gold-light);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Side Decoration - Vine Pattern */
+.side-decoration {
+    position: absolute;
+    top: 40px;
+    bottom: 40px;
+    width: 30px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="30" height="100" viewBox="0 0 30 100" xmlns="http://www.w3.org/2000/svg"><path d="M15,0 Q25,25 15,50 T15,100" fill="none" stroke="%23d4af37" stroke-width="2" opacity="0.5"/><circle cx="15" cy="25" r="3" fill="%23d4af37"/><circle cx="5" cy="50" r="2" fill="%23d4af37"/><circle cx="25" cy="75" r="2" fill="%23d4af37"/></svg>');
+    background-repeat: repeat-y;
+    z-index: 0;
+}
+
+.side-decoration.left {
+    left: 10px;
+    opacity: 0.6;
+}
+
+.side-decoration.right {
+    right: 10px;
+    transform: scaleX(-1);
+    opacity: 0.6;
+}
+
+/* Decorative Corners - More Ornate Floral SVG */
+.corner {
+    position: absolute;
+    width: 60px;
+    /* Reduced size */
+    height: 60px;
+    /* Reduced size */
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+    opacity: 0.9;
+}
+
+/* Floral Corner SVG Data URI */
+.top-left {
+    top: -5px;
+    left: -5px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d4af37" d="M10,10 C40,10 50,20 60,40 C55,30 40,20 20,20 C20,40 30,55 40,60 C20,50 10,40 10,10 Z M90,10 L10,10 L10,90 C10,40 40,10 90,10 Z"/><circle cx="20" cy="20" r="4" fill="%23d4af37"/></svg>');
+}
+
+.top-right {
+    top: -5px;
+    right: -5px;
+    transform: scaleX(-1);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d4af37" d="M10,10 C40,10 50,20 60,40 C55,30 40,20 20,20 C20,40 30,55 40,60 C20,50 10,40 10,10 Z M90,10 L10,10 L10,90 C10,40 40,10 90,10 Z"/><circle cx="20" cy="20" r="4" fill="%23d4af37"/></svg>');
+}
+
+.bottom-left {
+    bottom: -5px;
+    left: -5px;
+    transform: scaleY(-1);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d4af37" d="M10,10 C40,10 50,20 60,40 C55,30 40,20 20,20 C20,40 30,55 40,60 C20,50 10,40 10,10 Z M90,10 L10,10 L10,90 C10,40 40,10 90,10 Z"/><circle cx="20" cy="20" r="4" fill="%23d4af37"/></svg>');
+}
+
+.bottom-right {
+    bottom: -5px;
+    right: -5px;
+    transform: scale(-1);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23d4af37" d="M10,10 C40,10 50,20 60,40 C55,30 40,20 20,20 C20,40 30,55 40,60 C20,50 10,40 10,10 Z M90,10 L10,10 L10,90 C10,40 40,10 90,10 Z"/><circle cx="20" cy="20" r="4" fill="%23d4af37"/></svg>');
+}
+
+
+.biodata-header {
+    text-align: center;
+    margin-bottom: 15px;
+    /* Reduced from 30px */
+    margin-top: 10px;
+    /* Reduced from 20px */
+}
+
+.biodata-header h1 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    /* Reduced from 2.2rem */
+    color: var(--text-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.section-block {
+    margin-bottom: 15px;
+    /* Reduced from 25px */
+}
+
+.section-title {
+    background-color: var(--gold-light);
+    color: var(--text-dark);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    padding: 3px 12px;
+    display: inline-block;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    min-width: 180px;
+    border-left: 5px solid var(--gold);
+}
+
+.details-with-photo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.details-list {
+    flex: 1;
+}
+
+
+.photo-area {
+    width: 210px;
+    height: 260px;
+    border: 3px solid var(--gold);
+    padding: 5px;
+    background: white;
+    margin-left: 20px;
+}
+
+.photo-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.row {
+    display: flex;
+    margin-bottom: 4px;
+    /* Reduced from 8px */
+    line-height: 1.3;
+    /* Condensed line height */
+    font-size: 0.9rem;
+    /* Slightly reduced font size */
+}
+
+.row .label {
+    width: 150px;
+    /* Adjusted width */
+    font-weight: 700;
+    color: #444;
+    flex-shrink: 0;
+}
+
+.row .sep {
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+.row .value {
+    color: #222;
+    font-weight: 500;
+    white-space: pre-wrap;
+    /* Preserve newlines for address/textarea */
+}
+
+
+/* --- Print Styling --- */
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    .input-section,
+    .input-section * {
+        display: none !important;
+    }
+
+    .preview-section {
+        background: white;
+        padding: 0;
+        margin: 0;
+        display: block !important;
+        position: static;
+        /* Allow flow */
+        width: 100%;
+        height: auto !important;
+        /* Allow growth */
+        overflow: visible !important;
+    }
+
+    .biodata-paper {
+        visibility: visible;
+        position: relative;
+        width: 100%;
+        /* Fit page width */
+        max-width: 210mm;
+        min-height: 297mm;
+        height: auto !important;
+        margin: 0 auto;
+        box-shadow: none;
+        border: none;
+        overflow: visible !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        padding: 30px 40px;
+        /* Same reduced padding for print */
+    }
+
+    .biodata-paper * {
+        visibility: visible;
+    }
+
+    /* Ensure borders print on all pages if possible (browsers struggle with this) */
+    .biodata-paper:before,
+    .biodata-paper:after {
+        display: block;
+        /* Try to show borders */
+        height: 100%;
+        /* Stretch to cover full height */
+    }
+
+    /* Ensure background images and ornaments print */
+    .side-decoration,
+    .corner,
+    .photo-area,
+    .section-title {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
