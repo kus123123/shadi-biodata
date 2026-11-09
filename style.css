@@ -477,3 +477,114 @@ button#printBtn:hover {
         print-color-adjust: exact;
     }
 }
+
+/* Keep the biodata on one A4 page when printing or saving as PDF. */
+@media print {
+    @page {
+        size: A4;
+        margin: 7mm;
+    }
+
+    html,
+    body {
+        width: 196mm;
+        height: 283mm;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .app-container,
+    .preview-section {
+        display: block !important;
+        width: 196mm;
+        height: 283mm !important;
+        min-height: 0 !important;
+        margin: 0;
+        padding: 0;
+        overflow: hidden !important;
+        background: #fff !important;
+    }
+
+    .biodata-paper {
+        width: 196mm;
+        height: 283mm !important;
+        min-height: 0 !important;
+        max-width: none;
+        margin: 0;
+        padding: 12mm 14mm;
+        overflow: hidden !important;
+        box-shadow: none;
+        border: 0;
+        break-after: avoid-page;
+        page-break-after: avoid;
+    }
+
+    .biodata-header {
+        margin: 0 0 5px;
+    }
+
+    .biodata-header .ganesh-icon {
+        height: 42px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .biodata-header h1 {
+        font-size: 1.35rem;
+        letter-spacing: 1px;
+    }
+
+    .section-block {
+        margin-bottom: 7px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .section-title {
+        min-width: 0;
+        margin-bottom: 4px;
+        padding: 2px 9px;
+        font-size: 0.95rem;
+    }
+
+    .details-with-photo {
+        gap: 10px;
+    }
+
+    .photo-area {
+        flex: 0 0 34mm;
+        width: 34mm;
+        height: 43mm;
+        margin-left: 0;
+        padding: 3px;
+        border-width: 2px;
+        break-inside: avoid;
+    }
+
+    .row {
+        margin-bottom: 1px;
+        font-size: 8.5pt;
+        line-height: 1.12;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .row .label {
+        width: 34mm;
+    }
+
+    .row .sep {
+        margin-right: 5px;
+    }
+
+    .side-decoration {
+        top: 24px;
+        bottom: 24px;
+        width: 18px;
+    }
+
+    .corner {
+        width: 42px;
+        height: 42px;
+    }
+}
